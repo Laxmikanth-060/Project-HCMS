@@ -1,13 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 function Rules() {
   return (
-    <div className='flex justify-center shadow-md mt-9'>
-
-        <div><iframe src="/rules.pdf" width="1200px" height="600px"></iframe></div>
-
+    <div className="flex justify-center items-center shadow-md mt-9">
+      <div className="w-full max-w-screen-lg p-4">
+        <iframe
+          src="/rules.pdf"
+          className="w-full h-96 md:h-[600px] border"
+          title="Rules"
+        ></iframe>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Rules
+export default Rules;
