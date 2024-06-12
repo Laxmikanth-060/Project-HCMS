@@ -2,7 +2,7 @@ import { FaUser, FaUserCog,FaUserShield } from 'react-icons/fa';
 import { AiOutlineHome, AiOutlineMail, AiOutlineInfoCircle } from 'react-icons/ai';
 import {RiFileList2Line,RiFileTextLine} from 'react-icons/ri'
 import {MdPeople,MdSettingsBackupRestore} from 'react-icons/md'
-import MapIcon from '@material-ui/icons/Map';
+import MapIcon from '@mui/icons-material/Map';
 
 
 const StudentIcon = () => <FaUser style={{ fontSize: '150px' }}/>;
