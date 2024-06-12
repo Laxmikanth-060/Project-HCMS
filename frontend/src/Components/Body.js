@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import Footer from "../Components/Footer"
 
 function SampleNextArrow(props) {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
     <div
       className={`absolute top-1/2 transform -translate-y-1/2 right-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}
@@ -20,7 +20,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
     <div
       className={`absolute top-1/2 transform -translate-y-1/2 left-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}

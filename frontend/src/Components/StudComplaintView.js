@@ -24,13 +24,13 @@ function StudComplaintView() {
 
 
         for(let i=0;i<res.data.length;i++){
-          if(res.data[i].category=="Electrical")
+          if(res.data[i].category==="Electrical")
              e++;
         }
              setElectrical(e);                       
 
          for(let i=0;i<res.data.length;i++){
-              if(res.data[i].category=="Carpenter")
+              if(res.data[i].category==="Carpenter")
                  cr++;
             }
           
@@ -38,14 +38,14 @@ function StudComplaintView() {
 
 
              for(let i=0;i<res.data.length;i++){
-              if(res.data[i].category=="Cleaning")
+              if(res.data[i].category==="Cleaning")
                  cl++;
             }
 
            setCleaning(cl);
 
            for(let i=0;i<res.data.length;i++){
-            if(res.data[i].category=="Others")
+            if(res.data[i].category==="Others")
                ot++;
           }
             setOthers(ot);

@@ -8,7 +8,7 @@ function RegisterWarden() {
 
   const navigate=useNavigate();
   const dispatch=useDispatch();
-  const [msg,setMsg]=useState();
+  const [msg]=useState();
   const username=useRef();
    const email=useRef();
    const password=useRef();

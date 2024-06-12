@@ -30,7 +30,7 @@ import Ward_gh2 from "./Components/Ward_gh2";
 import Ward_gh1 from "./Components/Ward_gh1";
 import { Ward_bh1 } from "./Components/Ward_bh1";
 import { Ward_bh2 } from "./Components/Ward_bh2";
-import Register from "./Components/RegisterStudent";
+// import Register from "./Components/RegisterStudent";
 import StudentLogin from "./Components/StudentLogin";
 import RegisterStudent from "./Components/RegisterStudent";
 import WardenLogin from "./Components/WardenLogin";

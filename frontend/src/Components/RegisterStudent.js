@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState,useRef } from 'react'
 import axios from "axios"
 import {useNavigate} from 'react-router-dom'
@@ -9,7 +9,7 @@ function RegisterStudent() {
    
   const navigate=useNavigate();
   const dispatch=useDispatch();
-   const [msg,setMsg]=useState("");
+  //  const [msg,setMsg]=useState("");
    const [mail,setMail]=useState();
    const username=useRef();
    const email=useRef();
@@ -103,7 +103,7 @@ function RegisterStudent() {
       <input className='border border-black-100 my-3 p-2' placeholder='Parent phn no.' ref={ParentPhn} required/>
       <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Email : b19****@rgukt.ac.in' ref={email}  required/>
        {
-         mail=="Valid Email" ? <p className='mb-1 ml-[277px] text-green-500'>{mail}</p> : <p className='mb-1 ml-[277px] text-red-500'>{mail}</p>
+         mail==="Valid Email" ? <p className='mb-1 ml-[277px] text-green-500'>{mail}</p> : <p className='mb-1 ml-[277px] text-red-500'>{mail}</p>
        }
        <input className='border border-black-100 my-3 p-2' placeholder='Username' ref={username} required/>
        

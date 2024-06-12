@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import appStore from '../appStore'
+// import appStore from '../appStore'
 import {useDispatch} from 'react-redux'
 import { useState } from 'react'
 import { removeUser } from '../userSlice'
@@ -15,7 +15,7 @@ function Header() {
   const user=useSelector((state)=>state.user);
 
   const set=()=>{
-    temp=="close"?setTemp("open"):setTemp("close");
+    temp==="close"?setTemp("open"):setTemp("close");
   }
   
   const removehandler=()=>{
@@ -40,9 +40,9 @@ function Header() {
          {
           user.username ? <div className='h-[45px] w-[45px] mt-4 mr-20  hover:cursor-pointer ' >
 
-              <div onClick={set}><img src='/user.jpeg' className='rounded-full ml-16' /></div>
+              <div onClick={set}><img src='/user.jpeg' className='rounded-full ml-16' alt='logo'/></div>
             {
-                temp=="open" && <div className='flex flex-col ml-4 mt-3'> <button className='text-center border border-black hover:bg-slate-500 absolute p-[2px]' onClick={profileHandler}>Profile</button> <button className='text-center border border-black ml-14 mr-11 hover:bg-slate-500 absolute p-[2px] ' onClick={removehandler}>logout</button> </div> 
+                temp==="open" && <div className='flex flex-col ml-4 mt-3'> <button className='text-center border border-black hover:bg-slate-500 absolute p-[2px]' onClick={profileHandler}>Profile</button> <button className='text-center border border-black ml-14 mr-11 hover:bg-slate-500 absolute p-[2px] ' onClick={removehandler}>logout</button> </div> 
                 
             }
             

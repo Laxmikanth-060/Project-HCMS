@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 import NavBar from './Components/NavBar';
 import {Provider} from 'react-redux'
 import appStore from './appStore';
-import Footer from './Components/Footer';
+// import Footer from './Components/Footer';
 
 function App() {
   return (

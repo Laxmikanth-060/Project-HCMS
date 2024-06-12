@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { StudentIcon, AdminIcon, WardenIcon,WardenIconNav, HomeIcon, ContactIcon, AboutIcon, RulesIcon, WorkersIcon, TendersIcon, RoomChangeIcon,Maps } from '../Icons'
+import { NavLink } from 'react-router-dom'
+import {WardenIconNav, HomeIcon, ContactIcon, AboutIcon, RulesIcon, WorkersIcon, TendersIcon, RoomChangeIcon,Maps } from '../Icons'
 // import Maps from '../Icons'
 import { useState } from 'react'
 
@@ -10,14 +10,14 @@ function NavBar() {
 
   const toggleHandler=()=>{
       
-         toggle=="close" ? setToggle("open") : setToggle("close");
+         toggle==="close" ? setToggle("open") : setToggle("close");
          console.log(toggle)
   }
 
   return (
     
 
-     toggle=="open" ?
+     toggle==="open" ?
      <div>
       {/* <button className='fixed h-2 w-20 bg-slate-950' onClick={toggleHandler}></button>   */}
 

@@ -24,7 +24,7 @@ function Profile() {
   return (
     <div className='ml-96 mt-16 justify-center items-center'>
       <div className=''>
-        <img src='/user.jpeg'/>
+        <img src='/user.jpeg' alt='profile'/>
       </div>
       <div className='ml-5 mt-3'>
        <h1>Username : {user.username}</h1>

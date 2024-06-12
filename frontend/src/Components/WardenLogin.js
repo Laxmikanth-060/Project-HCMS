@@ -22,18 +22,18 @@ function WardenLogin() {
 
     axios.post("http://localhost:3001/login/warden",{username,password})
     .then((data)=>{
-      if(data.data=="password"){
+      if(data.data==="password"){
         setMsg("login succesful!");
          dispatch(addUser({
           username:username,
          }))
         navigate("/warden/view")
       }
-      else if(data.data=="nopassword"){
+      else if(data.data==="nopassword"){
         setMsg("wrong password!");
         
       }
-      else if(data.data=="nouser"){
+      else if(data.data==="nouser"){
         setMsg("no user found. Do Register !");
       }
     })

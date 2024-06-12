@@ -23,14 +23,14 @@ function StudentView() {
     axios.post("http://localhost:3001/student/view",{})
     .then((res)=>{
 
-       let p=0,r=0,e=0,cr=0,cl=0,ot=0;
+       let p=0,r=0;
          for(let i=0;i<res.data.length;i++){
-           if(res.data[i].status=="Pending")
+           if(res.data[i].status==="Pending")
               p++;
          }
          setPending(p);
          for(let i=0;i<res.data.length;i++){
-          if(res.data[i].status=="Resolved")
+          if(res.data[i].status==="Resolved")
              r++;
         }
         setResolved(r);

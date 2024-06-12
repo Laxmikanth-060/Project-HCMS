@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { StudentIcon, AdminIcon, WardenIcon } from '../Icons';
+import { StudentIcon, WardenIcon } from '../Icons';
 
 function Login() {
   return (

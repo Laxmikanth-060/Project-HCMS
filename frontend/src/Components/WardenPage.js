@@ -19,12 +19,12 @@ function WardenPage() {
       .then((res)=>{
         let p=0,r=0,e=0,cr=0,cl=0,ot=0;
          for(let i=0;i<res.data.length;i++){
-           if(res.data[i].status=="Pending")
+           if(res.data[i].status==="Pending")
               p++;
          }
          setPending(p);
          for(let i=0;i<res.data.length;i++){
-          if(res.data[i].status=="Resolved")
+          if(res.data[i].status==="Resolved")
              r++;
         }
         setResolved(r);
@@ -32,13 +32,13 @@ function WardenPage() {
 
 
         for(let i=0;i<res.data.length;i++){
-          if(res.data[i].category=="Electrical")
+          if(res.data[i].category==="Electrical")
              e++;
         }
              setElectrical(e);                       
 
          for(let i=0;i<res.data.length;i++){
-              if(res.data[i].category=="Carpenter")
+              if(res.data[i].category==="Carpenter")
                  cr++;
             }
           
@@ -46,7 +46,7 @@ function WardenPage() {
 
 
              for(let i=0;i<res.data.length;i++){
-              if(res.data[i].category=="Cleaning")
+              if(res.data[i].category==="Cleaning")
                  cl++;
             }
 
@@ -54,7 +54,7 @@ function WardenPage() {
 
 
            for(let i=0;i<res.data.length;i++){
-            if(res.data[i].category=="Others")
+            if(res.data[i].category==="Others")
                ot++;
           }
             setOthers(ot);
