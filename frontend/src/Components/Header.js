@@ -33,7 +33,7 @@ function Header() {
   return (
     <div className='flex  flex-wrap border border-black-200 justify-between  shadow-md h-[69px] bg-slate-300 rounded-sm'> 
       <div>
-      {/* <img className='w-[65px] h-[65px] py-2 px-2 rounded-full' src='/rguktlogo.jpeg' alt='logo'/> */}
+      <img className='w-[65px] h-[65px] py-2 px-2 rounded-full' src='/rguktlogo.jpeg' alt='logo'/>
       </div>
          {/* <h1 className='text-indigo-400 font-bold text-4xl mt-7 ml-5 shadow-sm'>Hostel Complaint Management System</h1> */}
       <div className=' justify-around mb-8 font-bold  '>
