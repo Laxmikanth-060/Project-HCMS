@@ -78,7 +78,7 @@ function StudComplaintView() {
 
       <h2 className='text-center text-2xl font-bold mt-6'>Total Complaints</h2>
       <div className='flex justify-center'>
-        <table className='mt-7 border border-black'>
+        <table className='mt-7 border border-black mb-10'>
           <thead className='border border-black'>
             <tr>
               <th className='border border-black px-6 py-4 text-lg font-bold text-stone-600 shadow-md'>Category</th>
