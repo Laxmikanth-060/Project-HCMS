@@ -151,6 +151,37 @@ app.post("/warden/view",async (req,res)=>{
   
 });
 
+app.post("/warden/complaints",async (req,res)=>{
+
+     const {hostel,category}=req.body;
+     const complaints = await Complaints.find({
+        hostel: hostel,
+        category: category
+      });
+      res.json(complaints);
+
+});
+
+app.post("/warden/status", async (req,res)=>{
+    const {id,hostel,category}=req.body;
+    let a=new Date().toString().split(" ")[4];
+    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
+   await Complaints.updateOne({_id:id,hostel:hostel,category:category},{$set:{status:"Resolved",btime:a+", "+b}})
+    
+})
+
+
+app.post("/warden/filter",async (req,res)=>{
+    const {Status,hostel,category}=req.body;
+    if(Status=="All"){
+        await Complaints.find({category:category,hostel:hostel})
+        .then(data=>res.json(data))
+        .catch(err=>console.log(err));
+    }else{
+    const data=await Complaints.find({hostel:hostel,category:category,status:Status});
+    res.json(data);
+    }
+})
 
 app.get("/warden/view/carpenter", async (req,res)=>{
   await  Complaints.find({category:"Carpenter"})
