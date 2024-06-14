@@ -21,15 +21,13 @@ import Complaint from "./Components/Complaint";
 import StudentView from "./Components/StudentView";
 import StudComplaintView from "./Components/StudComplaintView";
 import WardenPage from "./Components/WardenPage";
-import Electrical from "./Components/Electrical";
-import Carpenter from "./Components/Carpenter";
-import Cleaning from "./Components/Cleaning";
-import Others from "./Components/Others";
 import Profile from "./Components/Profile";
 import Rules from "./Components/Rules";
 import RoomChange from "./Components/RoomChange";
 import Maps from "./Components/Maps";
 import Tenders from "./Components/Tenders";
+import WardenView from "./Components/WardenView";
+import ViewComplaints from "./Components/ViewComplaints";
 
 const approuter = createBrowserRouter([
   {
@@ -126,23 +124,15 @@ const approuter = createBrowserRouter([
       },
       {
         path: "/warden/view",
+        element: <WardenView />,
+      },
+      {
+        path: "/warden/:hostel",
         element: <WardenPage />,
       },
       {
-        path: "/warden/view/electrical",
-        element: <Electrical />,
-      },
-      {
-        path: "/warden/view/carpenter",
-        element: <Carpenter />,
-      },
-      {
-        path: "/warden/view/cleaning",
-        element: <Cleaning />,
-      },
-      {
-        path: "/warden/view/others",
-        element: <Others />,
+        path:"/warden/:hostel/:category",
+        element: <ViewComplaints/>,
       },
       {
         path: "/view/profile",

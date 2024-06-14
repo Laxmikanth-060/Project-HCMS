@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 
 function WardenPage() {
-
+  
+    const { hostel }=useParams();  
     const [total,setTotal]=useState("0");
     const [resolved,setResolved]=useState("0");
     const [pending,setPending]=useState("0");
@@ -70,10 +71,10 @@ function WardenPage() {
 
     <div className='flex justify-center mt-10'>
         
-       <div><Link to="/warden/view/electrical"> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Electrical<span>({electrical})</span></div> </Link></div>
-       <div><Link to="/warden/view/carpenter"> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Carpenter<span>({carpenter})</span></div> </Link></div>
-       <div><Link to="/warden/view/cleaning"> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Cleaning<span>({cleaning})</span></div></Link></div>
-       <div><Link to="/warden/view/others"> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Others<span>({others})</span> </div></Link></div>
+       <div><Link to={`/warden/${hostel}/Electrical`}> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Electrical<span>({electrical})</span></div> </Link></div>
+       <div><Link to={`/warden/${hostel}/Carpenter`}> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Carpenter<span>({carpenter})</span></div> </Link></div>
+       <div><Link to={`/warden/${hostel}/Cleaning`}> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Cleaning<span>({cleaning})</span></div></Link></div>
+       <div><Link to={`/warden/${hostel}/Others`}> <div className=' h-450px bg-sky-400 hover:cursor-pointer hover:bg-sky-700 p-14 px-16 font-bold mx-6 rounded-lg hover:scale-105 shadow-sm text-xl text-slate-800 hover:text-black'>Others<span>({others})</span> </div></Link></div>
     </div>
           
           <h1 className='font-bold text-xl text-purple-700 text-center mt-12'>Complaints Statistics</h1>
@@ -86,10 +87,6 @@ function WardenPage() {
         <div className='bg-red-500 rounded-full h-[150px] w-[150px] m-4 mx-10'><div className='absolute mt-12 ml-[38px] text-slate-950 font-semibold text-lg'><h1>Pending</h1><h1 className='text-center'>{pending}</h1></div></div>
     </div>
 
-    {/* <div>
-      <h1 className='font-bold text-xl text-teal-900 text-center'>Room Change Complaints</h1>
-      <div className='w-[250px] h-[150px] bg-fuchsia-500'>  </div>
-    </div> */}
 
   </div>
 
