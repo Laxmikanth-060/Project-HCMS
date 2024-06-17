@@ -99,9 +99,9 @@ function RegisterStudent() {
       <div className='pl-12 mt-3'>
       <h1 className='font-bold text-xl my-5'>Register</h1>
       <input className='border border-black-100 my-3 p-2' placeholder='Full Name' ref={FullName} required/>
-      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Contact no.' ref={PhnNO} maxLength="10" required/>
-      <input className='border border-black-100 my-3 p-2' placeholder='Parent phn no.' ref={ParentPhn} maxLength="10" required/>
-      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Email : b19****@rgukt.ac.in' ref={email}  required/>
+      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Contact Number' ref={PhnNO} maxLength="10" required/>
+      <input className='border border-black-100 my-3 p-2' placeholder='Parent Contact Number' ref={ParentPhn} maxLength="10" required/>
+      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Email : b1*****@rgukt.ac.in' ref={email}  required/>
        {
          mail==="Valid Email" ? <p className='mb-1 ml-[290px] text-green-500'>{mail}</p> : <p className='mb-1 ml-[290px] text-red-500'>{mail}</p>
        }

@@ -69,7 +69,7 @@ function WardenLogin() {
           <h3 to='/forgot-password' className='text-blue-500 hover:underline ml-28 my-2'>Forgot password?</h3>
           <div className='flex items-center  space-x-5'>
             <p className='text-gray-600'>Don't have an Account?</p>
-            <Link to='/login/student/register' className='text-teal-600 font-bold hover:underline hover:scale-105'>Register</Link>
+            <Link to='/login/warden/register' className='text-teal-600 font-bold hover:underline hover:scale-105'>Register</Link>
           </div>
         </div>
       </div>
