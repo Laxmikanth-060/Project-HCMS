@@ -17,7 +17,7 @@ function StudentView() {
   const name = user.username;
 
   useEffect(() => {
-    axios.post("http://localhost:3001/student/view", {acholder})
+    axios.post("https://project-hcms-hkrx.onrender.com/student/view", {acholder})
       .then((res) => {
         let p = 0, r = 0;
         for (let i = 0; i < res.data.length; i++) {

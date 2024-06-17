@@ -24,7 +24,7 @@ function Complaint() {
     const Wing=wing.current.value;
     const Info=info.current.value;
     
-    axios.post("http://localhost:3001/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email})
+    axios.post("https://project-hcms-hkrx.onrender.com/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email})
     .then((data)=>{
       alert("Complaint submitted successfully!");
       navigate(`/student/${acholder}`);
@@ -38,7 +38,7 @@ function Complaint() {
       const formdata=new FormData();
     formdata.append('file',file);
     console.log(formdata);
-    axios.post("http://localhost:3001/upload",formdata)
+    axios.post("https://project-hcms-hkrx.onrender.com/upload",formdata)
 
     .then((data)=>{
       console.log(data);

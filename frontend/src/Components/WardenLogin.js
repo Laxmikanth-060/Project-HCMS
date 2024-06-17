@@ -16,7 +16,7 @@ function WardenLogin() {
     const email = mail.current.value;
     const password = pass.current.value;
 
-    axios.post("http://localhost:3001/login/warden", { email, password })
+    axios.post("https://project-hcms-hkrx.onrender.com/login/warden", { email, password })
       .then((data) => {
         if (data.data === "password") {
           setMsg("Login successful!");

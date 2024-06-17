@@ -61,7 +61,7 @@ function RegisterStudent() {
     }
 
 
-       axios.post("http://localhost:3001/login/student/register",{Username,Email,Password,phone,parentphn,fullname})
+       axios.post("https://project-hcms-hkrx.onrender.com/login/student/register",{Username,Email,Password,phone,parentphn,fullname})
        .then(data=>{
           //  if(data.data=="email"){
           //   setMsg("email already exits!");
