@@ -46,9 +46,9 @@ app.post("/login/student/register",async (req,res)=>{
 
 app.post("/login/student",async (req,res)=>{
 
-    const {username,password}=req.body;
+    const {email,password}=req.body;
    // console.log(req.body);
-   await Students.findOne({username:username})
+   await Students.findOne({email})
     .then((student)=>{
         if(student){
             //console.log(student.password);
@@ -91,9 +91,10 @@ app.post("/student/raisecomplaint",async (req,res)=>{
 
 app.post("/student/view",async (req,res)=>{
 
-    //const {Username,Email,Password}=req.body;
-    
-    await Complaints.find({})
+    const {acholder}=req.body;
+    const email=acholder+"@rgukt.ac.in";
+    console.log();
+    await Complaints.find({userId:acholder})
     .then((data)=>{res.json(data)})
     .catch((err)=>console.log(err));
        
@@ -128,9 +129,9 @@ app.post("/login/warden/register",async (req,res)=>{
 
 app.post("/login/warden",async(req,res)=>{
 
-    const {username,password}=req.body;
+    const {email,password}=req.body;
     //console.log(req.body);
-    await  Wardens.findOne({username:username})
+    await  Wardens.findOne({email:email})
     .then((warden)=>{
         if(warden){
             console.log(warden);
@@ -145,9 +146,9 @@ app.post("/login/warden",async(req,res)=>{
 })
 
 
-app.post("/warden/view",async (req,res)=>{
- 
-   await Complaints.find({}).then(data=>res.json(data)).catch(err=>res.json(err));
+app.post("/warden/dashboard",async (req,res)=>{
+  const {hostel}=req.body;
+   await Complaints.find({hostel:hostel}).then(data=>res.json(data)).catch(err=>res.json(err));
   
 });
 
@@ -170,6 +171,13 @@ app.post("/warden/status", async (req,res)=>{
     
 })
 
+app.post("/warden/accept", async (req,res)=>{
+    const {id,hostel,category}=req.body;
+    let a=new Date().toString().split(" ")[4];
+    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
+   await Complaints.updateOne({_id:id,hostel:hostel,category:category},{$set:{status:"Accepted",btime:a+", "+b}})
+    
+})
 
 app.post("/warden/filter",async (req,res)=>{
     const {Status,hostel,category}=req.body;
@@ -244,84 +252,17 @@ app.post("/warden/view/cleaning/status",async (req,res)=>{
     }
  })
 
-app.get("/warden/view/electrical",async (req,res)=>{
-    await  Complaints.find({category:"Electrical"})
-    .then(data=>res.json(data))
-    .catch(err=>console.log(err));
-})
-
-app.post("/warden/view/electrical", async(req, res) => {
-   
-    const {id} = req.body; 
-    let a=new Date().toString().split(" ")[4];
-    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
-   await Complaints.updateOne({_id:id},{$set:{status:"Resolved",btime:a+", "+b}})
-   .then(data=>res.json(data))
-   .catch(err=>res.json(err));
-    
-});
-
-app.post("/warden/view/electrical/status",async (req,res)=>{
-    const {Status}=req.body;
-    if(Status=="All"){
-        await Complaints.find({category:"Electrical"})
-        .then(data=>res.json(data))
-        .catch(err=>console.log(err));
-    }
-    else{
-    await Complaints.find({category:"Electrical",status:Status})
-     .then(data=>res.json(data))
-     .catch(err=>console.log(err));
-    }
- })
-
-app.get("/warden/view/others",async (req,res)=>{
-    await  Complaints.find({category:"Others"})
-    .then(data=>res.json(data))
-    .catch(err=>console.log(err));
-})
-
-
-app.post("/warden/view/others", async(req, res) => {
-   
-    const {id} = req.body; 
-    let a=new Date().toString().split(" ")[4];
-    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
-   await Complaints.updateOne({_id:id},{$set:{status:"Resolved",btime:a+", "+b}})
-   .then(data=>res.json(data))
-   .catch(err=>res.json(err));
-    
-});
-
-app.post("/warden/view/others/status", async(req, res) => {
-   
-    const {Status}=req.body;
-    if(Status=="All"){
-        await Complaints.find({category:"Others"})
-        .then(data=>res.json(data))
-        .catch(err=>console.log(err));
-    }
-    else{
-    await Complaints.find({category:"Others",status:Status})
-     .then(data=>res.json(data))
-     .catch(err=>console.log(err));
-    }
-});
 
 
 app.post("/view/profile",async (req,res)=>{
-    const {name}=req.body;
-    await  Students.find({username:name})
-    .then(data=>{
-        if(data){
-        res.json(data);
-        return;
-    }
-    })
-    .catch(err=>console.log(err));
-    // await Wardens.find({username:name})
-    // .then(data=>res.json(data))
-    // .catch(err=>console.log(err));
+    const {acholder}=req.body;
+    const ward=await Wardens.find({email:acholder});
+    const stud=await  Students.find({email:acholder});
+    if(ward.length!=0)
+    res.json(ward);
+    else
+    res.json(stud);
+    
 })
 
 
