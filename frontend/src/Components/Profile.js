@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
 function Profile() {
   const user = useSelector((state) => state.user);
-  const [data, setData] = useState("");
+  const [username, setUsername] = useState("");
+  const [email,setEmail]=useState("");
   const name = user.username;
-
+  const {acholder}=useParams();
+  
   useEffect(() => {
-    axios.post("http://localhost:3001/view/profile", { name })
+    axios.post("http://localhost:3001/view/profile", { acholder })
       .then(data => {
-        const mail = data.data[0].email;
-        console.log(mail)
-        setData(mail);
+         setUsername(data.data[0].username);
+         setEmail(data.data[0].email);
       })
       .catch(err => console.log(err));
-  }, [name]);
+  }, [name,acholder]);
 
   return (
-    <div className='ml-96 mt-16 justify-center items-center'>
+    <div className='mx-[540px] mt-16 justify-center items-center'>
       <div className=''>
         <img src='/user.jpeg' alt='profile'/>
       </div>
       <div className='ml-5 mt-3'>
-       <h1>Username : {user.username}</h1>
-       <h1>Email : {data}</h1>
+       <h1 className='text-xl my-4'>Username : {username}</h1>
+       <h1 className='text-xl my-4'>Email : {email}</h1>
       </div>
     </div>
   )

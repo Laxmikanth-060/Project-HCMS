@@ -107,15 +107,15 @@ const approuter = createBrowserRouter([
         element: <RegisterStudent />,
       },
       {
-        path: "/student/view",
-        element: <StudentView />,
+        path: "student/:acholder",
+        element: <StudentView/>,
       },
       {
-        path: "/student/raisecomplaint",
+        path: "/student/:acholder/raisecomplaint",
         element: <Complaint />,
       },
       {
-        path: "/student/viewcomplaint",
+        path: "/student/:acholder/viewcomplaint",
         element: <StudComplaintView />,
       },
       {
@@ -135,7 +135,7 @@ const approuter = createBrowserRouter([
         element: <ViewComplaints/>,
       },
       {
-        path: "/view/profile",
+        path: "/:acholder/profile",
         element: <Profile />,
       },
     ],

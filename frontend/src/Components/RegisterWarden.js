@@ -47,7 +47,7 @@ function RegisterWarden() {
       <h1 className='font-bold text-xl my-5'>Register</h1>
        <input className='border border-black-100 my-3 p-2' placeholder='Username' ref={username} required/>
        <input className='border border-black-100 my-3 p-2' placeholder='Email' ref={email} required />
-       <input className='border border-black-100 my-3 p-2' placeholder='Password' ref={password} required />
+       <input className='border border-black-100 my-3 p-2' placeholder='Password' ref={password} required type='password' />
        <p className='mb-4 my-1 text-red-500'>{msg}</p>
        <button className='bg-emerald-300 hover:bg-emerald-400 w-24 h-8 rounded-md ml-16 font-bold hover:scale-110'>register</button></div>
       

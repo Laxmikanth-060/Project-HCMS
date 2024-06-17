@@ -13,7 +13,7 @@ function Header() {
   const navigate=useNavigate();
   const [temp,setTemp]=useState("close");
   const user=useSelector((state)=>state.user);
-
+  
   const set=()=>{
     temp==="close"?setTemp("open"):setTemp("close");
   }
@@ -26,7 +26,7 @@ function Header() {
   }
 
   const profileHandler=()=>{
-      navigate("/view/profile")
+      navigate(`/${user.email}/profile`)
   }
 
 
@@ -38,7 +38,7 @@ function Header() {
          {/* <h1 className='text-indigo-400 font-bold text-4xl mt-7 ml-5 shadow-sm'>Hostel Complaint Management System</h1> */}
       <div className=' justify-around mb-8 font-bold  '>
          {
-          user.username ? <div className='h-[45px] w-[45px] mt-4 mr-20  hover:cursor-pointer ' >
+          user.email ? <div className='h-[45px] w-[45px] mt-4 mr-20  hover:cursor-pointer ' >
 
               <div onClick={set}><img src='/user.jpeg' className='rounded-full ml-16' alt='logo'/></div>
             {

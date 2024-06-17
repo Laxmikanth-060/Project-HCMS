@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
      <Provider store={appStore}>
+      
       <Header/>
-     
       <NavBar/>
       <Outlet/>
      

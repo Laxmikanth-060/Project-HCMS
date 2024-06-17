@@ -1,11 +1,12 @@
 import React from 'react'
 import { useRef,useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useParams} from 'react-router-dom'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
 
 function Complaint() {
-
+  
+   const {acholder}=useParams();
    const [file,setFile]=useState();
    const email=useSelector((state)=>state.user.email);
    const navigate=useNavigate();
@@ -26,7 +27,7 @@ function Complaint() {
     axios.post("http://localhost:3001/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email})
     .then((data)=>{
       alert("Complaint submitted successfully!");
-      navigate("/student/view");
+      navigate(`/student/${acholder}`);
     })
     .catch((err)=>err);
   }
@@ -59,7 +60,7 @@ function Complaint() {
 
     
     <h1 className='font-bold text-slate-800 text-2xl ml-2 my-3'>Complaint Category: </h1>
-   <select className='bg-transparent text-center mx-3 border border-slate-400 hover:border-black hover:scale-95 text-1xl font-semibold text-zinc-700 px-4 py-1 my-3 hover:cursor-pointer' ref={cat} required>
+   <select className='bg-transparent text-center mx-3 border border-slate-400 hover:border-black text-1xl font-semibold text-zinc-700 px-4 py-1 my-3 hover:cursor-pointer' ref={cat} required>
     <option  value="None">Choose complaint Category</option>
     <option value="Electrical">Electrical</option>
     <option value="Carpenter">Carpentor work</option>
@@ -70,7 +71,7 @@ function Complaint() {
 
 
     <h1 className='font-bold text-slate-800 text-2xl ml-20 my-3'>Hostel Name: </h1>
-   <select className='text-center mx-3 border border-slate-400 hover:border-black hover:scale-95 text-1xl font-semibold text-zinc-700 px-4 py-1 my-3 hover:cursor-pointer' ref={hostel} required>
+   <select className='text-center mx-3 border border-slate-400 hover:border-black text-1xl font-semibold text-zinc-700 px-4 py-1 my-3 hover:cursor-pointer' ref={hostel} required>
     <option  value="none">Select Hostel Name</option>
     <option value="BH-1">BH-1</option>
     <option value="BH-2">BH-2</option>
@@ -81,7 +82,7 @@ function Complaint() {
    </select><br/>
 
    <h1 className='font-bold text-slate-800 text-2xl ml-2 my-3'>Hostel Wing: </h1>
-   <select className='text-center mx-3 border border-slate-400 hover:border-black hover:scale-95 text-1xl font-semibold text-zinc-700 px-4 h-[30px] my-3 hover:cursor-pointer' ref={wing} required>
+   <select className='text-center mx-3 border border-slate-400 hover:border-black text-1xl font-semibold text-zinc-700 px-4 h-[30px] my-3 hover:cursor-pointer' ref={wing} required>
     <option value="none">Select wing</option>
     <option value="East">East</option>
     <option value="West">West</option>

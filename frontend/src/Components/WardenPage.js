@@ -16,7 +16,7 @@ function WardenPage() {
 
     useEffect(()=>{
 
-      axios.post("http://localhost:3001/warden/view",{})
+      axios.post("http://localhost:3001/warden/dashboard",{hostel})
       .then((res)=>{
         let p=0,r=0,e=0,cr=0,cl=0,ot=0;
          for(let i=0;i<res.data.length;i++){
@@ -63,10 +63,10 @@ function WardenPage() {
       })
       .catch(err=>console.log(err));
 
-    },[])
+    })
 
   return (
-    <div className='mt-6'>
+    <div className='mt-8'>
         <h1 className='text-pink-700 text-4xl flex-none text-center'>Complaints Categories</h1>
 
     <div className='flex justify-center mt-10'>

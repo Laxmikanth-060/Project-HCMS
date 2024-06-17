@@ -11,7 +11,7 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className={`absolute top-1/2 transform -translate-y-1/2 right-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}
+      className={`absolute top-1/3 transform -translate-y-1/2 right-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}
       onClick={onClick}
     >
       &#8250;
@@ -23,7 +23,7 @@ function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className={`absolute top-1/2 transform -translate-y-1/2 left-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}
+      className={`absolute top-1/3 transform -translate-y-1/2 left-0 bg-cyan-100 p-2 rounded-full w-8 h-10 shadow-lg hover:bg-red-600 z-10 cursor-pointer`}
       onClick={onClick}
     >
       &#8249;
@@ -44,29 +44,35 @@ function Body() {
   };
 
   return (
-   <div className='bg-cover pb-14 ' style={{ backgroundImage: "url('https://as2.ftcdn.net/v2/jpg/02/80/21/23/1000_F_280212305_KgZdCn9Z7W84ytEvcZV0iN6ciM73ccqm.jpg')" }}>
+    // className='bg-cover' style={{ backgroundImage: "url('/wall.jpeg')" }}
+   <div>
      
-      {user.username ? (
+      {user.email ? (
         <StudentView />
       ) : (
-        <div className='m-auto'>
+        <div className='relative m-auto'>
 
-          <div className="pt-3">
+          <div className="absolute top-8 left-0 w-full z-10">
           <MovingLine />
+          <div className=' my-12'>
+          <h1 className='text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-red-600 via-yellow-600 via-green-500 to-blue-500 text-center'>Hostel Complaint Management System</h1>
+          {/* <h3 className='"Effortless Complaint Resolution at Your Fingertips"'>Welcomes you</h3> */}
+          <h3 className='text-center font-bold text-2xl text-teal-800 my-2'>"Effortless Complaint Resolution at Your Fingertips"</h3>
+          </div>
           </div>
           
-          <Slider {...settings} className='w-[1000px] mx-auto'>
+          <Slider {...settings} className=''>
             <div className='flex justify-center'>
-              <img src="/hostel.jpeg" alt="Slide 1" className='w-[800px] h-[330px] ml-[100px] mt-[65px]' />
+              <img src="/wall.jpeg" alt="Slide 1" className='w-screen h-screen' />
             </div>
             <div className='flex justify-center'>
-              <img src="/hostel1.jpeg" alt="Slide 2" className='w-[800px] h-[330px] ml-[100px] mt-[65px]' />
+              <img src="/hostel1.jpeg" alt="Slide 2" className='w-screen h-screen' />
             </div>
             <div className='flex justify-center'>
-              <img src="/hostel2.jpeg" alt="Slide 3" className='w-[800px] h-[330px] ml-[100px] mt-[65px]' />
+              <img src="/hostel2.jpeg" alt="Slide 3" className='w-screen h-screen ' />
             </div>
             <div className='flex justify-center'>
-              <img src="/hostel3.jpeg" alt="Slide 4" className='w-[800px] h-[330px] ml-[100px] mt-[65px]' />
+              <img src="/hostel3.jpeg" alt="Slide 4" className='w-screen h-screen ' />
             </div>
           </Slider>
         </div>

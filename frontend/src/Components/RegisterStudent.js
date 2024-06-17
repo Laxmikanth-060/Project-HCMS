@@ -76,8 +76,8 @@ function RegisterStudent() {
 
           }));
 
-
-          navigate("/student/view")
+          const email=Email.slice(0,7);
+          navigate(`/student/${email}`);
            
        }).catch(err=>err);
    }
@@ -99,15 +99,15 @@ function RegisterStudent() {
       <div className='pl-12 mt-3'>
       <h1 className='font-bold text-xl my-5'>Register</h1>
       <input className='border border-black-100 my-3 p-2' placeholder='Full Name' ref={FullName} required/>
-      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Contact no.' ref={PhnNO} required/>
-      <input className='border border-black-100 my-3 p-2' placeholder='Parent phn no.' ref={ParentPhn} required/>
+      <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Contact no.' ref={PhnNO} maxLength="10" required/>
+      <input className='border border-black-100 my-3 p-2' placeholder='Parent phn no.' ref={ParentPhn} maxLength="10" required/>
       <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Email : b19****@rgukt.ac.in' ref={email}  required/>
        {
-         mail==="Valid Email" ? <p className='mb-1 ml-[277px] text-green-500'>{mail}</p> : <p className='mb-1 ml-[277px] text-red-500'>{mail}</p>
+         mail==="Valid Email" ? <p className='mb-1 ml-[290px] text-green-500'>{mail}</p> : <p className='mb-1 ml-[290px] text-red-500'>{mail}</p>
        }
        <input className='border border-black-100 my-3 p-2' placeholder='Username' ref={username} required/>
        
-       <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Password' ref={password} required/>
+       <input className='border border-black-100 my-3 p-2 ml-14' placeholder='Password' ref={password} type='password' required/>
  
        <button className='bg-emerald-300 px-14 py-2 rounded-md ml-[180px] mt-5 font-bold hover:scale-110 hover:bg-emerald-400 '>register</button></div>
       

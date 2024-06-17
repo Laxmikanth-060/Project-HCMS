@@ -47,7 +47,7 @@ function StudComplaintView() {
 
   return (
     <div className='mt-5'>
-      <h1 className='font-bold text-xl text-purple-700 text-center mt-12'>Category Statistics</h1>
+      <h1 className='font-bold text-xl text-teal-700 text-center mt-12'>Category Statistics</h1>
 
       <div className='flex justify-center mt-3 mx-[50px]'>
         <div className='bg-teal-500 rounded-full h-[150px] w-[150px] m-4 mx-10'>
@@ -76,7 +76,7 @@ function StudComplaintView() {
         </div>
       </div>
 
-      <h2 className='text-center text-2xl font-bold mt-6'>Total Complaints</h2>
+      <h2 className='text-center text-2xl text-blue-800 font-bold mt-6'>Total Complaints</h2>
       <div className='flex justify-center mb-10'>
         <table className='mt-7 border border-black mb-10'>
           <thead className='border border-black'>
@@ -103,11 +103,13 @@ function StudComplaintView() {
                 <td className='border border-black-200 text-center py-4 text-md shadow-md'>{complaint.atime}</td>
                 <td className='border border-black-200 text-center py-4 text-md shadow-md'>{complaint.btime}</td>
                 <td className='border border-black-200 text-center py-4 text-md shadow-md'>
-                  {complaint.status === "Pending" ? (
-                    <span className='text-red-600 font-bold text-lg'>{complaint.status}</span>
-                  ) : (
-                    <span className='text-green-500 font-bold text-lg'>{complaint.status}</span>
-                  )}
+                {complaint.status === "Pending" ? (
+            <span className='text-red-600 font-bold text-lg'>{complaint.status}</span>
+          ) : complaint.status === "Accepted" ? (
+            <span className='text-blue-500 font-bold text-lg'>{complaint.status}</span>
+          ) : (
+            <span className='text-green-500 font-bold text-lg'>{complaint.status}</span>
+          )}
                 </td>
               </tr>
             ))}
