@@ -9,7 +9,8 @@ const schema=new mongoose.Schema({
     info:String,
     atime:String,
     btime:String,
-    status:String
+    status:String,
+    image: String,
 });
 
 const Complaints=mongoose.model("complaints",schema);

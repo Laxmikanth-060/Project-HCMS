@@ -65,11 +65,11 @@ app.post("/login/student",async (req,res)=>{
 
 app.post("/student/raisecomplaint",async (req,res)=>{
 
-    const {Cat,Hostel,Wing,Room,Info,email}=req.body;
+    const {Cat,Hostel,Wing,Room,Info,email,base64}=req.body;
     let a=new Date().toString().split(" ")[4];
     let b=new Date().toString().split(" ").slice(1,4).join("/ ");
     let Email=email.slice(0,7);
-   // console.log(Email);
+   console.log(base64);
     await Complaints.create({
         userId:Email,
         category:Cat,
@@ -79,6 +79,7 @@ app.post("/student/raisecomplaint",async (req,res)=>{
         wing:Wing,
         atime:a+", "+b,
         status:"Pending",
+        image:base64,
     })
     .then((data)=>{
         res.json(data);
@@ -191,66 +192,16 @@ app.post("/warden/filter",async (req,res)=>{
     }
 })
 
-app.get("/warden/view/carpenter", async (req,res)=>{
-  await  Complaints.find({category:"Carpenter"})
-    .then(data=>res.json(data))
-    .catch(err=>console.log(err));
-})
 
-app.post("/warden/view/carpenter", async(req, res) => {
-    const {id} = req.body; 
-    let a=new Date().toString().split(" ")[4];
-    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
-   await Complaints.updateOne({_id:id},{$set:{status:"Resolved",btime:a+", "+b}})
-   .then(data=>res.json(data))
-   .catch(err=>res.json(err));
-    
-});
-
-app.post("/warden/view/carpenter/status", async(req, res) => {
-   
-    const {Status}=req.body;
-    if(Status=="All"){
-        await Complaints.find({category:"Carpenter"})
-        .then(data=>res.json(data))
-        .catch(err=>console.log(err));
-    }
-    else{
-    await Complaints.find({category:"Carpenter",status:Status})
-     .then(data=>res.json(data))
-     .catch(err=>console.log(err));
-    }
-});
-
-app.get("/warden/view/cleaning",async (req,res)=>{
-   await Complaints.find({category:"Cleaning"})
-    .then(data=>res.json(data))
-    .catch(err=>console.log(err));
+app.post("/warden/complaints/image",async(req,res)=>{
+    const {image}=req.body;
+    console.log(image);
+    await Complaints.find({_id:image})
+         .then(data=>res.json(data))
+         .catch(err=>res.json(err));
 })
 
 
-app.post("/warden/view/cleaning", async(req, res) => {
-    const {id} = req.body; 
-    let a=new Date().toString().split(" ")[4];
-    let b=new Date().toString().split(" ").slice(1,4).join("/ ");
-   await Complaints.updateOne({_id:id},{$set:{status:"Resolved",btime:a+", "+b}})
-   .then(data=>res.json(data))
-   .catch(err=>res.json(err));
-});
-
-app.post("/warden/view/cleaning/status",async (req,res)=>{
-    const {Status}=req.body;
-    if(Status=="All"){
-        await Complaints.find({category:"Cleaning"})
-        .then(data=>res.json(data))
-        .catch(err=>console.log(err));
-    }
-    else{
-    await Complaints.find({category:"Cleaning",status:Status})
-     .then(data=>res.json(data))
-     .catch(err=>console.log(err));
-    }
- })
 
 
 
