@@ -11,7 +11,7 @@ function StudComplaintView() {
   const email = useSelector((state) => state.user.email);
 
   useEffect(() => {
-    axios.post("https://project-hcms-hkrx.onrender.com/student/complaintView", { email })
+    axios.post("http://localhost:3001/student/complaintView", { email })
       .then((res) => {
         const Data = res.data;
         setData(Data);

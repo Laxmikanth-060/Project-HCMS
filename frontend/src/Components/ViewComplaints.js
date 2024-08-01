@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 
 function ViewComplaints() {
 
@@ -13,7 +13,7 @@ function ViewComplaints() {
   const statusHandler = (e, id) => {
     e.preventDefault();
 
-    axios.post("https://project-hcms-hkrx.onrender.com/warden/status", { id,hostel,category })
+    axios.post("http://localhost:3001/warden/status", { id,hostel,category })
       .then(response => {
         
         // Update the data based on the response if needed
@@ -27,7 +27,7 @@ function ViewComplaints() {
   const acceptHandler = (e, id) => {
     e.preventDefault();
 
-    axios.post("https://project-hcms-hkrx.onrender.com/warden/accept", { id,hostel,category })
+    axios.post("http://localhost:3001/warden/accept", { id,hostel,category })
       .then(response => {
         
         // Update the data based on the response if needed
@@ -38,10 +38,11 @@ function ViewComplaints() {
     toggleTemp();
   }
 
+
   const filterHandler = (e) => {
     e.preventDefault();
     const Status = state.current.value;
-    axios.post("https://project-hcms-hkrx.onrender.com/warden/filter", { Status,hostel,category })
+    axios.post("http://localhost:3001/warden/filter", { Status,hostel,category })
       .then(response => {
         setData(response.data);
       })
@@ -49,7 +50,7 @@ function ViewComplaints() {
   }
 
   useEffect(() => {
-    axios.post("https://project-hcms-hkrx.onrender.com/warden/complaints",{hostel,category})
+    axios.post("http://localhost:3001/warden/complaints",{hostel,category})
       .then(res => {
         const Data = res.data;
         setData(Data);
@@ -82,6 +83,7 @@ function ViewComplaints() {
             <th className='border border-black px-13 py-3 text-lg font-bold text-stone-600'>Info</th>
             <th className='border border-black px-12 py-3 text-lg font-bold text-stone-600'>Raised Time</th>
             <th className='border border-black px-12 py-3 text-lg font-bold text-stone-600'>Resolved Time</th>
+            <th className='border border-black px-12 py-3 text-lg font-bold text-stone-600'>Image</th>
             <th className='border border-black px-7 py-3 text-lg font-bold text-stone-600'>
               Status
               <form onSubmit={filterHandler} className='flex'>
@@ -109,6 +111,13 @@ function ViewComplaints() {
               <td className='border border-black-200 px-3 py-2 text-md text-center'>{complaint.info}</td>
               <td className='border border-black-200 px-2 py-2 text-md text-center'>{complaint.atime}</td>
               <td className='border border-black-200 px-2 py-2 text-md text-center'>{complaint.btime}</td>
+              <td className='border border-black-200 text-md'>
+              <Link to={`/warden/${hostel}/${category}/${complaint._id}`}>
+                  <button className='border border-black-200 px-5 py-4 text-md w-full bg-blue-400 hover:bg-blue-500 hover:scale-105'>
+                    view
+                  </button>
+                  </Link>  
+              </td>
               <td className='border border-black-200 px-3 py-2 text-md text-center'>
               {complaint.status === "Pending" ? (
                  <span className='text-red-600 font-bold text-lg'>{complaint.status}</span>

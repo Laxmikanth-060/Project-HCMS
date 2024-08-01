@@ -28,6 +28,7 @@ import Maps from "./Components/Maps";
 import Tenders from "./Components/Tenders";
 import WardenView from "./Components/WardenView";
 import ViewComplaints from "./Components/ViewComplaints";
+import ViewImage from "./Components/ViewImage";
 
 const approuter = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ const approuter = createBrowserRouter([
       {
         path:"/warden/:hostel/:category",
         element: <ViewComplaints/>,
+      },
+      {
+        path:"/warden/:hostel/:category/:image",
+        element: <ViewImage/>,
       },
       {
         path: "/:acholder/profile",

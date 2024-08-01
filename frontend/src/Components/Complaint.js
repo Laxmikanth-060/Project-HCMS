@@ -16,15 +16,18 @@ function Complaint() {
    const wing=useRef();
    const info=useRef();
 
-  const submithandler=(e)=>{
+  const submithandler= async(e)=>{
     e.preventDefault();
+    console.log(file);
+    const base64=await convertBase64(file);
+    console.log(base64);
     const Cat=cat.current.value;
     const Hostel=hostel.current.value;
     const Room=room.current.value;
     const Wing=wing.current.value;
     const Info=info.current.value;
     
-    axios.post("https://project-hcms-hkrx.onrender.com/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email})
+    axios.post("http://localhost:3001/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email,base64})
     .then((data)=>{
       alert("Complaint submitted successfully!");
       navigate(`/student/${acholder}`);
@@ -32,21 +35,6 @@ function Complaint() {
     .catch((err)=>err);
   }
 
-  const fileHandle=(e)=>{
-  
-     console.log(file);
-      const formdata=new FormData();
-    formdata.append('file',file);
-    console.log(formdata);
-    axios.post("https://project-hcms-hkrx.onrender.com/upload",formdata)
-
-    .then((data)=>{
-      console.log(data);
-    })
-
-    .catch(err=>console.log(err));
-
-    }
   
 
   return (
@@ -97,8 +85,8 @@ function Complaint() {
    <textarea className='border border-slate-400 hover:border-black h-[50px] px-3 py-1 mx-3 my-4' placeholder="add info..." ref={info} ></textarea>
    <div className='flex'>
    <h1 className='font-bold text-slate-800 text-2xl ml-[120px] my-3'>Upload Image:</h1>
-   <input className='border border-slate-400 hover:border-black h-[35px] px-3 py-1 mx-[10px] w-[250px] my-3' type="file" onChange={e=>setFile(e.target.files[0])}/>
-   <button type="button" onClick={fileHandle} className= ' h-[30px] bg-blue-600 py-1 px-2 rounded-lg  hover:scale-105 hover:cursor-pointer mt-4'>Upload</button>
+   <input className='border border-slate-400 hover:border-black h-[35px] px-3 py-1 mx-[10px] w-[250px] my-3' type="file"  accept=".jpg, .jpeg, .png" onChange={e=>setFile(e.target.files[0])}/>
+   <button type="button" onClick={console.log(file)} className= ' h-[30px] bg-blue-600 py-1 px-2 rounded-lg  hover:scale-105 hover:cursor-pointer mt-4'>Upload</button>
    </div>
 
    <button type='submit' className='bg-green-500 hover:bg-green-700 w-[200px] my-4 mt-7 ml-[425px] px-3 py-2 rounded-lg text-lg text-semibold hover:scale-110'>Submit</button>
@@ -111,3 +99,16 @@ function Complaint() {
 }
 
 export default Complaint
+
+function convertBase64(file){
+      return new Promise((resolve,reject)=>{
+        const fileReader=new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload=()=>{
+          resolve(fileReader.result);
+        };
+        fileReader.onerror=(error)=>{
+          reject(error);
+        }
+      })
+}
