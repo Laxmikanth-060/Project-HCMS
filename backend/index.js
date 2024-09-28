@@ -1,8 +1,11 @@
+const dotenv=require("dotenv");
 const express=require("express");
 const mongoose=require("mongoose");
 const cors=require("cors");
 const multer=require("multer");
 const path=require("path");
+
+dotenv.config();
 
 const Students=require("./Models/Student");
 const Wardens=require("./Models/Warden");
@@ -12,7 +15,15 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/miniproject",); 
+
+try{
+
+    mongoose.connect(process.env.MONGO_URL);
+    console.log("mongodb connected successfully");
+
+}catch(err){
+    console.log("error in connecting mongodb",err);
+} 
 
 const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
@@ -28,14 +39,12 @@ const upload = multer({
 })
 
 app.post('/upload',upload.single('file'),(req,res)=>{
-    console.log(req.file);
+    // console.log(req.file);
 })
 
 app.post("/login/student/register",async (req,res)=>{
 
     const {Username,Email,Password,phone,parentphn,fullname}=req.body;
-    console.log(req.body);
- 
     await Students.create({username:Username,email:Email,password:Password})
     .then(()=>{res.json(req.body)})
     .catch((err)=>console.log(err));
@@ -94,7 +103,6 @@ app.post("/student/view",async (req,res)=>{
 
     const {acholder}=req.body;
     const email=acholder+"@rgukt.ac.in";
-    console.log();
     await Complaints.find({userId:acholder})
     .then((data)=>{res.json(data)})
     .catch((err)=>console.log(err));
@@ -195,7 +203,6 @@ app.post("/warden/filter",async (req,res)=>{
 
 app.post("/warden/complaints/image",async(req,res)=>{
     const {image}=req.body;
-    console.log(image);
     await Complaints.find({_id:image})
          .then(data=>res.json(data))
          .catch(err=>res.json(err));
@@ -215,11 +222,6 @@ app.post("/view/profile",async (req,res)=>{
     res.json(stud);
     
 })
-
-
-
-
-
 
 app.listen(3001,()=>{
     console.log("server running successfully!");
