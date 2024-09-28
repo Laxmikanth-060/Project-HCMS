@@ -14,6 +14,7 @@ const Complaints=require("./Models/Complaint");
 const app=express();
 app.use(express.json());
 app.use(cors());
+const __dirname=path.resolve();
 
 
 try{
@@ -222,6 +223,14 @@ app.post("/view/profile",async (req,res)=>{
     res.json(stud);
     
 })
+
+if(process.env.NODE_ENV==="production"){
+    app.use(express.static(path.join(__dirname,"/frontend/dist")));
+
+    app.get("/",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
+    })
+}
 
 app.listen(3001,()=>{
     console.log("server running successfully!");
