@@ -75,7 +75,8 @@ app.post("/login/student",async (req,res)=>{
 
 app.post("/student/raisecomplaint",async (req,res)=>{
 
-    const {Cat,Hostel,Wing,Room,Info,email,base64}=req.body;
+    const {Cat,Hostel,Wing,Room,Info,email}=req.body;
+    // base64 pending
     let a=new Date().toString().split(" ")[4];
     let b=new Date().toString().split(" ").slice(1,4).join("/ ");
     let Email=email.slice(0,7);
@@ -89,7 +90,7 @@ app.post("/student/raisecomplaint",async (req,res)=>{
         wing:Wing,
         atime:a+", "+b,
         status:"Pending",
-        image:base64,
+        // image:base64,
     })
     .then((data)=>{
         res.json(data);
