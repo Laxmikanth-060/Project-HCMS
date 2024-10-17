@@ -8,7 +8,7 @@ function ViewImage() {
     const [temp,settemp]=useState(null);
 
     useEffect(()=>{
-        axios.post("http://localhost:3001/warden/complaints/image",{image})
+        axios.post("https://project-hcms-3.onrender.com/warden/complaints/image",{image})
         .then(res=>{
               settemp(res.data[0].image);
         })

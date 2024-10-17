@@ -16,7 +16,7 @@ function StudentLogin() {
     const email = mail.current.value;
     const password = pass.current.value;
 
-    axios.post("http://localhost:3001/login/student", { email, password })
+    axios.post("https://project-hcms-3.onrender.com/login/student", { email, password })
       .then((data) => {
         if (data.data === "password") {
           setMsg("Login successful!");

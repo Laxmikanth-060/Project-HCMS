@@ -13,7 +13,7 @@ function ViewComplaints() {
   const statusHandler = (e, id) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3001/warden/status", { id,hostel,category })
+    axios.post("https://project-hcms-3.onrender.com/warden/status", { id,hostel,category })
       .then(response => {
         
         // Update the data based on the response if needed
@@ -27,7 +27,7 @@ function ViewComplaints() {
   const acceptHandler = (e, id) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3001/warden/accept", { id,hostel,category })
+    axios.post("https://project-hcms-3.onrender.com/warden/accept", { id,hostel,category })
       .then(response => {
         
         // Update the data based on the response if needed
@@ -42,7 +42,7 @@ function ViewComplaints() {
   const filterHandler = (e) => {
     e.preventDefault();
     const Status = state.current.value;
-    axios.post("http://localhost:3001/warden/filter", { Status,hostel,category })
+    axios.post("https://project-hcms-3.onrender.com/warden/filter", { Status,hostel,category })
       .then(response => {
         setData(response.data);
       })
@@ -50,7 +50,7 @@ function ViewComplaints() {
   }
 
   useEffect(() => {
-    axios.post("http://localhost:3001/warden/complaints",{hostel,category})
+    axios.post("https://project-hcms-3.onrender.com/warden/complaints",{hostel,category})
       .then(res => {
         const Data = res.data;
         setData(Data);

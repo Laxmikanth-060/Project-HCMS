@@ -17,7 +17,7 @@ function StudentView() {
   const name = user.username;
 
   useEffect(() => {
-    axios.post("http://localhost:3001/student/view", {acholder})
+    axios.post("https://project-hcms-3.onrender.com/student/view", {acholder})
       .then((res) => {
         let p = 0, r = 0;
         for (let i = 0; i < res.data.length; i++) {
@@ -36,7 +36,7 @@ function StudentView() {
   });
 
   useEffect(() => {
-    axios.post("http://localhost:3001/view/profile", { name })
+    axios.post("https://project-hcms-3.onrender.com/view/profile", { name })
       .then(data => {
         const mail = data.data[0].email;
         console.log(mail);

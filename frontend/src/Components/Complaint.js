@@ -18,16 +18,16 @@ function Complaint() {
 
   const submithandler= async(e)=>{
     e.preventDefault();
-    console.log(file);
-    const base64=await convertBase64(file);
-    console.log(base64);
+    // console.log(file);
+    // const base64=await convertBase64(file);
+    // console.log(base64);
     const Cat=cat.current.value;
     const Hostel=hostel.current.value;
     const Room=room.current.value;
     const Wing=wing.current.value;
     const Info=info.current.value;
     
-    axios.post("http://localhost:3001/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email,base64})
+    axios.post("https://project-hcms-3.onrender.com/student/raisecomplaint",{Cat,Hostel,Room,Wing,Info,email})
     .then((data)=>{
       alert("Complaint submitted successfully!");
       navigate(`/student/${acholder}`);
@@ -100,15 +100,15 @@ function Complaint() {
 
 export default Complaint
 
-function convertBase64(file){
-      return new Promise((resolve,reject)=>{
-        const fileReader=new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload=()=>{
-          resolve(fileReader.result);
-        };
-        fileReader.onerror=(error)=>{
-          reject(error);
-        }
-      })
-}
+// function convertBase64(file){
+//       return new Promise((resolve,reject)=>{
+//         const fileReader=new FileReader();
+//         fileReader.readAsDataURL(file);
+//         fileReader.onload=()=>{
+//           resolve(fileReader.result);
+//         };
+//         fileReader.onerror=(error)=>{
+//           reject(error);
+//         }
+//       })
+// }

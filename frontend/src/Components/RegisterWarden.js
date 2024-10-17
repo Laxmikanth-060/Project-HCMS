@@ -19,7 +19,7 @@ function RegisterWarden() {
       const Email=email.current.value;
       const Password=password.current.value;
 
-      axios.post("http://localhost:3001/login/warden/register",{Username,Email,Password})
+      axios.post("https://project-hcms-3.onrender.com/login/warden/register",{Username,Email,Password})
       .then(data=>{
          //  if(data.data=="email"){
          //   setMsg("email already exits!");

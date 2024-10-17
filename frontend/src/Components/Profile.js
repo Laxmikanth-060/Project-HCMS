@@ -11,7 +11,7 @@ function Profile() {
   const {acholder}=useParams();
   
   useEffect(() => {
-    axios.post("http://localhost:3001/view/profile", { acholder })
+    axios.post("https://project-hcms-3.onrender.com/view/profile", { acholder })
       .then(data => {
          setUsername(data.data[0].username);
          setEmail(data.data[0].email);

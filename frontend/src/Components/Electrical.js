@@ -10,7 +10,7 @@ function Electrical() {
   const submitHandler = (e, id) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3001/warden/view/electrical", { id })
+    axios.post("https://project-hcms-3.onrender.com/warden/view/electrical", { id })
       .then(response => {
         // Update the data based on the response if needed
         // setData(prevData => prevData.map(complaint => complaint._id === id ? { ...complaint, status: "Resolved" } : complaint));
@@ -23,7 +23,7 @@ function Electrical() {
   const statusHandler = (e) => {
     e.preventDefault();
     const Status = state.current.value;
-    axios.post("http://localhost:3001/warden/view/electrical/status", { Status })
+    axios.post("https://project-hcms-3.onrender.com/warden/view/electrical/status", { Status })
       .then(response => {
         setData(response.data);
       })
@@ -31,7 +31,7 @@ function Electrical() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3001/warden/view/electrical")
+    axios.get("https://project-hcms-3.onrender.com/warden/view/electrical")
       .then(res => {
         const Data = res.data;
         setData(Data);
