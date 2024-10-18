@@ -15,6 +15,14 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 // const __dirname=path.resolve();
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 
 
 try{
