@@ -14,7 +14,7 @@ const Complaints=require("./Models/Complaint");
 const app=express();
 app.use(express.json());
 app.use(cors());
-// const __dirname=path.resolve();
+const __dirname=path.resolve();
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
