@@ -88,7 +88,7 @@ app.post("/student/raisecomplaint",async (req,res)=>{
     let a=new Date().toString().split(" ")[4];
     let b=new Date().toString().split(" ").slice(1,4).join("/ ");
     let Email=email.slice(0,7);
-   console.log(base64);
+//    console.log(base64);
     await Complaints.create({
         userId:Email,
         category:Cat,
